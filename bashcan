@@ -1,0 +1,9 @@
+#!/bin/bash
+
+target_ip="192.168.1.10"  # NOTE:Replace this IP with your target IP
+
+echo "Scanning ports on $target_ip..."
+for port in {1..1024}; do
+    timeout 1 bash -c "echo > /dev/tcp/$target_ip/$port" 2>/dev/null &&
+    echo "Port $port is open"
+done
